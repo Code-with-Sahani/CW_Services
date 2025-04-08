@@ -1,27 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Contact = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkScreen();
+    window.addEventListener('resize', checkScreen);
+    return () => window.removeEventListener('resize', checkScreen);
+  }, []);
 
   return (
-    <section className=" py-25 px-4 min-h-[80vh]" id="contact">
+    <section className="py-20 px-4 min-h-[80vh]" id="contact">
       <div className="max-w-7xl mx-auto">
-    
-        <div className="flex flex-col md:flex-row items-start gap-10"> 
-          <div
-            className="relative w-full md:w-1/2 flex justify-center items-start"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
+        <div className="flex flex-col md:flex-row gap-10 items-start">
+
+          <div className="relative w-full md:w-1/2 flex justify-center">
             <img
               src="/Images/envelop_front.webp"
               alt="Envelope"
               className="w-full h-auto rounded-xl shadow-xl"
             />
-            <form
-              className={`absolute left-1/2 transform -translate-x-1/2 transition-all duration-1000 ease-in-out ${
-                isHovered ? 'top-[-50%]' : 'top-[-20%]'
-              } w-full px-4`}
+
+            <div
+              className={`absolute ${
+                isMobile ? 'top-[-45%]' : 'top-[-20%]'
+              } left-1/2 transform -translate-x-1/2 w-full px-4`}
             >
               <div className="bg-white/80 backdrop-blur-md p-6 rounded-lg shadow-md w-full max-w-md mx-auto">
                 <p className="text-gray-800 mb-4 text-sm sm:text-base">
@@ -65,10 +71,10 @@ const Contact = () => {
                   </button>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
- 
-          <div className="w-full md:w-1/2 flex flex-col gap-12 mt-6 md:mt-0">
+
+          <div className="w-full md:w-1/2 flex flex-col gap-10 mt-6 md:mt-0">
             <h3 className="text-4xl font-semibold text-gray-800 border-l-4 border-blue-500 pl-4">
               Contact Us
             </h3>
@@ -76,10 +82,10 @@ const Contact = () => {
               Let's Start Our First Project Together, Call Now.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-8">
+            <div className="flex flex-col sm:flex-row gap-6">
               <a
                 href="tel:+911234567890"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md shadow transition w-max"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md shadow transition w-full text-center"
               >
                 📞 Call Now
               </a>
@@ -87,7 +93,7 @@ const Contact = () => {
                 href="https://wa.me/911234567890"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md shadow transition w-max"
+                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md shadow transition w-full text-center"
               >
                 💬 WhatsApp Now
               </a>
