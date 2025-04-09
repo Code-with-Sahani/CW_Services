@@ -10,7 +10,6 @@ const Navbar = () => {
 
     return (
         <>
-            {/* Navbar */}
             <nav className="bg-gradient-to-r from-blue-100 via-white to-blue-100 w-full shadow-md z-50 relative">
                 <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
                     {/* Logo */}
@@ -18,7 +17,6 @@ const Navbar = () => {
                         <img src={img} alt="CW Services Logo" className="h-10 w-auto" />
                     </div>
 
-                    {/* Desktop Menu */}
                     <ul className="hidden md:flex gap-10 text-gray-800 text-base font-medium">
                         <li><a href="#home" className="hover:text-blue-600 transition duration-300">Home</a></li>
                         <li><a href="#about-us" className="hover:text-blue-600 transition duration-300">Mobile App Development</a></li>
@@ -26,7 +24,6 @@ const Navbar = () => {
                         <li><a href="#contact" className="hover:text-blue-600 transition duration-300">Logo Design</a></li>
                     </ul>
 
-                    {/* Mobile Toggle Button */}
                     <div className="md:hidden">
                         <button onClick={toggleMenu} className="text-gray-800 focus:outline-none">
                             <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -41,7 +38,6 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            {/* Mobile Slide-in Menu */}
             <div className={`absolute top-[64px] left-0 w-full bg-gradient-to-b from-blue-100 via-blue-200 to-blue-300 z-40 transition-all duration-300 ease-in-out overflow-hidden md:hidden ${
                 isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
             }`}>
