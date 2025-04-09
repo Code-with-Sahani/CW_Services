@@ -9,7 +9,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-white w-full shadow-md z-50">
+        <nav className="bg-white w-full shadow-md z-50 fixed top-0 left-0">
             <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
 
                 {/* Logo */}
@@ -40,7 +40,11 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu */}
-            <div className={`md:hidden bg-white px-6 pb-4 transition-all duration-300 ease-in-out ${isOpen ? 'block' : 'hidden'}`}>
+            <div
+                className={`md:hidden bg-white w-full transition-all duration-300 ease-in-out ${
+                    isOpen ? 'max-h-60 opacity-100 py-4 px-6' : 'max-h-0 overflow-hidden opacity-0'
+                }`}
+            >
                 <ul className="flex flex-col gap-4 text-black text-base font-medium">
                     <li><a href="#home" className="hover:text-blue-500 transition duration-300">Home</a></li>
                     <li><a href="#about-us" className="hover:text-blue-500 transition duration-300">Mobile App Development</a></li>
